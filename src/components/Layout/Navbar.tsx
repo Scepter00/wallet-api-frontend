@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => { 
   const router = useRouter()
+  const pathname = usePathname();
 
   const handleGetStartedClick = () => {
     router.push("/register")
   }
+
 
     return(
       
@@ -18,6 +21,10 @@ const Navbar = () => {
         alt={'e-wallet Logo'}
         className="w-32 h-fit mt-[2px] md:w-20 md:h-40"
       />
+      {
+        pathname !== "/" ?
+        (<p>Other things</p>): null
+      }
       <button className="bg-blue-500 text-white rounded-full px-5 py-2 mb-1 md:mr-19 md:w-" onClick={handleGetStartedClick}>Get Started</button>
       </section>
     )
